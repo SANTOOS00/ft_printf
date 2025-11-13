@@ -1,24 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_mystrdup.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: moerrais <moerrais@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/01 00:13:15 by moerrais          #+#    #+#             */
-/*   Updated: 2025/11/13 02:56:30 by moerrais         ###   ########.fr       */
+/*   Created: 2025/11/13 01:11:49 by moerrais          #+#    #+#             */
+/*   Updated: 2025/11/13 01:21:44 by moerrais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
+#include <stdlib.h>
+char *ft_mystrdup(char *str)
+{
+	int i;
+	char *mystr;
 
-#include <stdio.h>
-#include <unistd.h>
-
-int print_char(char c);
-int print_str(char *str);
-int print_pointer(int *p);
-int print_int(int nb);
-
-#endif
+	i = 0;
+	while (str[i])
+		i++;
+	mystr = malloc(i + 1);
+	if (!mystr)
+	{
+		return (NULL);
+	}
+	i = 0;
+	while (str[i])
+	{
+		mystr[i] = str[i];
+		i++;
+	}
+	mystr[i] = '\0';
+	return (mystr);
+}

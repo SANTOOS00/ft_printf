@@ -1,24 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   print_char.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: moerrais <moerrais@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/01 00:13:15 by moerrais          #+#    #+#             */
-/*   Updated: 2025/11/13 02:56:30 by moerrais         ###   ########.fr       */
+/*   Created: 2025/11/12 21:30:04 by moerrais          #+#    #+#             */
+/*   Updated: 2025/11/13 02:59:07 by moerrais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
+#include "libftprintf.h"
 
-#include <stdio.h>
-#include <unistd.h>
-
-int print_char(char c);
-int print_str(char *str);
-int print_pointer(int *p);
-int print_int(int nb);
-
-#endif
+int	print_char(char c)
+{
+	return (write(1, &c, 1));
+}

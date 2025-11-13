@@ -6,55 +6,21 @@
 /*   By: moerrais <moerrais@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 17:49:58 by moerrais          #+#    #+#             */
-/*   Updated: 2025/11/12 09:19:47 by moerrais         ###   ########.fr       */
+/*   Updated: 2025/11/13 02:57:31 by moerrais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-
-#include <stdio.h>
 #include "libftprintf.h"
 #include <stdarg.h>
+#include <stdio.h>
 
-// int printf_args(const char *mystr, va_list args)
-// {
-// 	va_list copy;
-// 	va_copy(copy, args);
-// 	if (mystr)
-// 	{
-// 		if (mystr == '%')
-// 		{
-// 			mystr++;
-// 			if ()
-// 		}
-// 	}
-	
-// }
-// int  printf_str (char *str)
-// {
-	
-// }
-// int  print_pointeur(int *p)
-// {
-	
-// }
-
-// int print_decmal(int a)
-// {
-	
-// }
-// int print_integer(int a)
-// {
-	
-// }
-int ft_ischeck(char c)
+int	ft_ischeck(char c)
 {
-	char *str;
-	int i;
+	char	*str;
+	int		i;
 
 	str = "cspdiuxX%";
 	i = 0;
-
 	while (str[i])
 	{
 		if (str[i] == c)
@@ -65,57 +31,59 @@ int ft_ischeck(char c)
 	}
 	return (0);
 }
-
-int main()
+int	print_naiba(va_list args, char c)
 {
-	int tmp = ft_ischeck('a');
-	printf ("%d", tmp);
+	int	add_byt;
+
+	add_byt = 0;
+	if (c == 'c')
+		add_byt += print_char(va_arg(args, char)); //=====ok=====
+	else if (c == 's')
+		add_byt += print_str(va_arg(args, char *)); //=====ok=====
+	else if (c == 'p')
+		add_byt += print_pointer(va_arg(args, int *)); //======ok=======
+	else if (c == 'd' || c == 'i')
+		add_byt += print_int(va_arg(args, int)); //======ok======
+	// else if (c == 'u')
+	// 	add_byt += print_decimal(va_arg(args, unsigned int));
+	// else if (c == 'x')
+	// 	print_hex_lowercase(va_arg(args, unsigned int));
+	// else if (c == 'X')
+	// 	print_hex_uppercase(va_arg(args, unsigned int));
+	else
+		print_char(c);
+	return (add_byt);
 }
 
-// int ft_printf(const char *mystr, ...)
-// {
-// 	va_list args;
-// 	va_start(args,mystr);
-// 	int byt;
-// 	int i = 0;
-// 	byt = 0;
-// 	if (!mystr)
-// 		return (0);
+int	ft_printf(const char *mystr, ...)
+{
+	va_list	args;
+	int		add_byt;
+	int		i;
 
-// 	while (mystr[i])
-// 	{
-// 		if (mystr[i] == '%')
-// 		{
-// 			i++;
-// 			if (ft_ischeck(mystr[i]))
-// 			{
-				
-// 			}	
-// 		}
-// 	}
-	
-	
+	va_start(args, mystr);
+	i = 0;
+	add_byt = 0;
+	if (!mystr)
+		return (0);
+	while (mystr[i])
+	{
+		if (mystr[i] == '%')
+		{
+			i++;
+			if (ft_ischeck(mystr[i]))
+				add_byt += print_naiba(args, mystr[i]);
+			else
+				add_byt += print_char(mystr[i]);
+		}
+		else
+			print_char(mystr[i]);
+		i++;
+	}
+	return (add_byt);
+}
+
 // 	int main()
 // 	{
 // 		ft_printf (NULL);
-	// printf (NULL);
-
-		// mystr++;
-		// if (*mystr == 's')
-		// 	printf_str(va_arg(args,char *));
-		// if else (*mystr == 'p')
-		// 	print_pointeur(va_arg(args, int *));
-		// if else (*mystr == 'd')
-		// 	print_decmal(va_arg(args, int));
-		// if else (*mystr == 'i')
-		// 	print_integer(va_arg(args, int));
-		// if else (*mystr == 'u')
-		// 	print_unsigend_int(va_arg(args, unsigned int));
-		// if else (*mystr == 'x')
-		// 	print_hexadecimal_lowercase(va_arg(args, unsigned int));
-		// if else (*mystr == 'X')
-		// 	print_hexadecimal_uppercase(va_arg(args unsigned int));
-		// else
-		// 	print_char (mystr);
-		// }
-		// mystr++;
+// printf (NULL);ls
