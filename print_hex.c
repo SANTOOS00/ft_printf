@@ -1,54 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_int.c                                        :+:      :+:    :+:   */
+/*   print_hex.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: moerrais <moerrais@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/12 22:07:58 by moerrais          #+#    #+#             */
-/*   Updated: 2025/11/13 10:14:38 by moerrais         ###   ########.fr       */
+/*   Created: 2025/11/13 11:46:15 by moerrais          #+#    #+#             */
+/*   Updated: 2025/11/13 14:31:40 by moerrais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int	len_int(int nb)
+static int	len_int(int nb)
 {
 	int	len;
 
 	len = 0;
 	while (nb)
 	{
-		nb = nb / 10;
+		nb = nb / 16;
 		len++;
 	}
 	return (len);
 }
-int	print_int(int nb)
-{
-	int add_byt;
 
-	add_byt = 0;
-	if (!nb)
+int	print_hex(unsigned int number, int tmp)
+{
+	char *buffer;
+	char str[20];
+	int size;
+
+	if (!number)
+		return (print_char('0'));
+	if (tmp)
+		buffer = "0123456789abcdef";
+	else
+		buffer = "0123456789ABCDEF";
+	size = len_int(number);
+	str[size] = '\0';
+	while (number)
 	{
-		return (print_char('0'), 1);
+		str[--size] = buffer[number % 16];
+		number /= 16;
 	}
-	if (nb == -2147483648)
-	{
-		add_byt += print_str("-2147483648");
-		return (add_byt);
-	}
-	if (nb < 0)
-	{
-		nb = -nb;
-		print_char('-');
-		add_byt++;
-	}
-	add_byt += len_int(nb);
-	if (nb >= 10)
-	{
-		print_int(nb / 10);
-	}
-	print_char((nb % 10) + '0');
-	return (add_byt);
+	size = print_str(str);
+	return (size);
 }

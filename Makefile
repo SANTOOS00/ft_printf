@@ -6,7 +6,7 @@
 #    By: moerrais <moerrais@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/31 23:40:14 by moerrais          #+#    #+#              #
-#    Updated: 2025/11/12 09:23:59 by moerrais         ###   ########.fr        #
+#    Updated: 2025/11/13 14:30:42 by moerrais         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,9 +16,8 @@ CC = cc
 
 FLAGS = -Wall -Wextra -Werror
 
-SRC = mystrdup.c print_char.c print_int.c\
-	print_pointer.c print_str.c
-
+SRC =  ft_printf.c ft_mystrdup.c  print_char.c print_pointer.c\
+	print_int.c print_str.c print_hex.c print_decmal.c
 
 OBG = $(SRC:%.c=%.o)
  

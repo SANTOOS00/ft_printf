@@ -6,7 +6,7 @@
 /*   By: moerrais <moerrais@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 21:30:04 by moerrais          #+#    #+#             */
-/*   Updated: 2025/11/13 02:59:07 by moerrais         ###   ########.fr       */
+/*   Updated: 2025/11/13 10:13:44 by moerrais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,9 @@
 
 int	print_char(char c)
 {
+	if (!c)
+	{
+		return (1);
+	}
 	return (write(1, &c, 1));
 }

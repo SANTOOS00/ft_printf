@@ -6,51 +6,51 @@
 /*   By: moerrais <moerrais@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 21:44:50 by moerrais          #+#    #+#             */
-/*   Updated: 2025/11/13 03:22:50 by moerrais         ###   ########.fr       */
+/*   Updated: 2025/11/13 10:15:49 by moerrais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-#include <stdlib.h>
-int ft_print_pointer(char *buffer, int i)
+
+int	print_anaiba(char *str, int i)
 {
-	char *str;
-	int byt_print;
-	str = malloc (i + 1);
-	if (!str)
+	char	*mystr;
+	int		j;
+	int		byt_print;
+
+	j = 2;
+	mystr = malloc(i + 3);
+	if (!mystr)
 	{
 		return (0);
 	}
-	str[0] = '0';
-	str[1] = 'x';
-	int j = 2;
-	while (i--> 0)
+	mystr[0] = '0';
+	mystr[1] = 'x';
+	while (i > 0)
 	{
-		str[j++] = buffer[i];
+		mystr[j++] = str[--i];
 	}
-	str[j] = '\0';
-	byt_print = print_str(str);
-	free(str);
+	mystr[j] = '\0';
+	byt_print = print_str(mystr);
+	free(mystr);
 	return (byt_print);
 }
-
-int		print_pointer(int *p)
+int	print_pointer(int *p)
 {
-	char *hexdec = "0123456789abcdef";
-	unsigned long addr;
-	char buffer[17];
-	int byt_print;
+	char *addr;
+	long addrs_long;
+	char str[20];
 	int i;
 
 	i = 0;
-	addr = (unsigned long)p;
 	if (!p)
-		print_str("0x0");
-	while (addr > 0)
+		return (print_str("(nil)"));
+	addr = "0123456789abcdef";
+	addrs_long = (long)p;
+	while (addrs_long)
 	{
-		buffer[i++] = hexdec[addr % 16];
-		addr = addr / 16;
+		str[i++] = addr[addrs_long % 16];
+		addrs_long /= 16;
 	}
-	byt_print = ft_print_pointer (buffer, i);
-	return (byt_print);
+	return (print_anaiba(str, i));
 }

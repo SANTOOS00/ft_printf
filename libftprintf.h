@@ -6,19 +6,27 @@
 /*   By: moerrais <moerrais@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/01 00:13:15 by moerrais          #+#    #+#             */
-/*   Updated: 2025/11/13 02:56:30 by moerrais         ###   ########.fr       */
+/*   Updated: 2025/11/13 14:27:27 by moerrais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #ifndef LIBFTPRINTF_H
 # define LIBFTPRINTF_H
 
 #include <unistd.h>
-#include <stdio.h>
+#include <stdlib.h>
+#include <stdarg.h>
+
+
+int	ft_printf(const char *mystr, ...);
 int print_char(char c);
 int print_str(char *str);
 int print_pointer(int *p);
 int print_int(int nb);
-
 char *ft_mystrdup(char *str);
+int print_decimal(unsigned int number);
+int print_hex(unsigned int number, int tmp);
+int print_hex(unsigned int number, int tmp);
+int print_decimal(unsigned int number);
 
 #endif
