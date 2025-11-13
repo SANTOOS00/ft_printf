@@ -22,11 +22,11 @@ int ft_print_pointer(char *buffer, int i)
 		return (0);
 	}
 	str[0] = '0';
-	str[1] = '1';
+	str[1] = 'x';
 	int j = 2;
 	while (i--> 0)
 	{
-		buffer[j++] = buffer[i];
+		str[j++] = buffer[i];
 	}
 	str[j] = '\0';
 	byt_print = print_str(str);
@@ -53,12 +53,4 @@ int		print_pointer(int *p)
 	}
 	byt_print = ft_print_pointer (buffer, i);
 	return (byt_print);
-}
-#include <stdio.h>
-int main()
-{
-	int a = 9;
-	int *p = &a;
-	print_pointer(p);
-	printf ("\n%p", p);
 }
