@@ -16,7 +16,9 @@ CC = cc
 
 FLAGS = -Wall -Wextra -Werror
 
-SRC = 
+SRC = mystrdup.c print_char.c print_int.c\
+	print_pointer.c print_str.c
+
 
 OBG = $(SRC:%.c=%.o)
  

@@ -48,7 +48,7 @@ int	print_naiba(va_list args, char c)
 	// 	add_byt += print_decimal(va_arg(args, unsigned int));
 	// else if (c == 'x')
 	// 	print_hex_lowercase(va_arg(args, unsigned int));
-	// else if (c == 'X')
+	// else if (c == 'X')..
 	// 	print_hex_uppercase(va_arg(args, unsigned int));
 	else
 		print_char(c);

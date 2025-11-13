@@ -12,11 +12,10 @@
 
 #include "libftprintf.h"
 #include <stdlib.h>
-int ft_print_pointer(char *buffer, int i , char *str)
+int ft_print_pointer(char *buffer, int i)
 {
-	int byt_add;
-
-	byt_add = 0;
+	char *str;
+	int byt_print;
 	str = malloc (i + 1);
 	if (!str)
 	{
@@ -25,9 +24,14 @@ int ft_print_pointer(char *buffer, int i , char *str)
 	str[0] = '0';
 	str[1] = '1';
 	int j = 2;
-	while ()
+	while (i--> 0)
+	{
+		buffer[j++] = buffer[i];
+	}
 	str[j] = '\0';
-	return (print_str(str));
+	byt_print = print_str(str);
+	free(str);
+	return (byt_print);
 }
 
 int		print_pointer(int *p)
@@ -35,8 +39,8 @@ int		print_pointer(int *p)
 	char *hexdec = "0123456789abcdef";
 	unsigned long addr;
 	char buffer[17];
+	int byt_print;
 	int i;
-	char *str;
 
 	i = 0;
 	addr = (unsigned long)p;
@@ -47,16 +51,14 @@ int		print_pointer(int *p)
 		buffer[i++] = hexdec[addr % 16];
 		addr = addr / 16;
 	}
-	int byt_print = ft_print_pointer (buffer, i, str);
-	free(str); 
+	byt_print = ft_print_pointer (buffer, i);
 	return (byt_print);
 }
-
+#include <stdio.h>
 int main()
 {
 	int a = 9;
 	int *p = &a;
-	int pt = printf ("%p", p);
-	int  v = print_pointer(p);
-	printf ("%d || %d", v, pt);
+	print_pointer(p);
+	printf ("\n%p", p);
 }
