@@ -6,13 +6,13 @@
 /*   By: moerrais <moerrais@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 11:46:15 by moerrais          #+#    #+#             */
-/*   Updated: 2025/11/14 14:38:42 by moerrais         ###   ########.fr       */
+/*   Updated: 2025/11/15 21:32:12 by moerrais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-static int	len_int(int nb)
+static int	len_int(unsigned int nb)
 {
 	int	len;
 

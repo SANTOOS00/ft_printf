@@ -6,7 +6,7 @@
 /*   By: moerrais <moerrais@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/01 00:13:15 by moerrais          #+#    #+#             */
-/*   Updated: 2025/11/14 14:35:14 by moerrais         ###   ########.fr       */
+/*   Updated: 2025/11/15 21:58:45 by moerrais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 int		ft_printf(const char *mystr, ...);
 int		print_char(char c);
 int		print_str(char *str);
-int		print_pointer(int *p);
+int		print_pointer(void *p);
 int		print_int(int nb);
 char	*ft_mystrdup(char *str);
 int		print_decimal(unsigned int number);

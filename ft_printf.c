@@ -6,29 +6,11 @@
 /*   By: moerrais <moerrais@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 17:49:58 by moerrais          #+#    #+#             */
-/*   Updated: 2025/11/14 14:36:51 by moerrais         ###   ########.fr       */
+/*   Updated: 2025/11/15 22:33:31 by moerrais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-
-int	ft_ischeck(char c)
-{
-	char	*str;
-	int		i;
-
-	str = "cspdiuxX%";
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] == c)
-		{
-			return (1);
-		}
-		i++;
-	}
-	return (0);
-}
 
 int	is_check(va_list args, char c)
 {
@@ -40,7 +22,7 @@ int	is_check(va_list args, char c)
 	else if (c == 's')
 		add_byt += print_str(va_arg(args, char *));
 	else if (c == 'p')
-		add_byt += print_pointer(va_arg(args, int *));
+		add_byt += print_pointer(va_arg(args, void *));
 	else if (c == 'd' || c == 'i')
 		add_byt += print_int(va_arg(args, int));
 	else if (c == 'u')
@@ -64,16 +46,17 @@ int	ft_printf(const char *mystr, ...)
 	i = 0;
 	add_byt = 0;
 	if (!mystr)
-		return (0);
+		return (-1);
 	while (mystr[i])
 	{
+		if (write(1, "", 0) < 0)
+			return (-1);
 		if (mystr[i] == '%')
 		{
 			i++;
-			if (ft_ischeck(mystr[i]))
-				add_byt += is_check(args, mystr[i]);
-			else
-				add_byt += print_char(mystr[i]);
+			if (mystr[i] == '\0')
+				return (-1);
+			add_byt += is_check(args, mystr[i]);
 		}
 		else
 			add_byt += print_char(mystr[i]);

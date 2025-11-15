@@ -6,7 +6,7 @@
 /*   By: moerrais <moerrais@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 21:42:39 by moerrais          #+#    #+#             */
-/*   Updated: 2025/11/14 14:42:04 by moerrais         ###   ########.fr       */
+/*   Updated: 2025/11/15 21:47:01 by moerrais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,15 @@
 
 int	print_str(char *str)
 {
-	int		i;
-	char	*mystr;
+	int	i;
 
 	i = 0;
 	if (!str)
-		i = print_str("(null)");
-	else
+		return (print_str("(null)"));
+	while (str[i])
 	{
-		mystr = ft_mystrdup(str);
-		while (mystr[i])
-		{
-			write(1, &mystr[i], 1);
-			i++;
-		}
-		free(mystr);
+		write(1, &str[i], 1);
+		i++;
 	}
 	return (i);
 }
